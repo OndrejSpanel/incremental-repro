@@ -1,3 +1,1 @@
-object ClassA {
-  def a: String = "b"
-}
+object ClassA {def a: String = "a"}
