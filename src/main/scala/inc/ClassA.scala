@@ -15,9 +15,9 @@ object ClassA {
       def transitiveClosure(children: Int => IterableOnce[Int]): Set[Int] = {
         @tailrec
         def recurse(todo: Set[Int], done: Set[Int]): Set[Int] = {
-          val add = todo.flatMap(id => children(id)).diff(done)
-          if (add.isEmpty) done
-          else recurse(add, done ++ add)
+          val toAdd = todo.flatMap(id => children(id)).diff(done)
+          if (toAdd.isEmpty) done
+          else recurse(toAdd, done ++ toAdd)
         }
 
         recurse(ids, ids)
