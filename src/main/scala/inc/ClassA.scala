@@ -1,10 +1,12 @@
 package inc
 
 import scala.annotation.tailrec
+import Schema.hiddenType
 
 object ClassA {
   def a: String = "b"
 
+  @hiddenType
   case class E(
     active: Set[Int], frozen: Set[Int]
   ) {
@@ -24,6 +26,10 @@ object ClassA {
       def withRelated: Set[Int] = {
         transitiveClosure(_ => None)
       }
+    }
+
+    def -(e: Int): E = {
+      this.copy(active - e, frozen - e)
     }
 
     def update: E = {
