@@ -10,6 +10,9 @@ object ClassA {
   case class E(
     active: Set[Int], frozen: Set[Int]
   ) {
+    val sa = SC.A
+    val sd = SC.derivedClasses
+
     extension (ids: Set[Int]) {
 
       def transitiveClosure(children: Int => IterableOnce[Int]): Set[Int] = {
